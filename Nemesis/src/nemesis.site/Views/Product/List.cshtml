@@ -1,0 +1,23 @@
+﻿@model Nemesis.Site.Models.StoreProductListViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<div>
+    <div class="panel-title">
+        <h1>Products</h1>
+    </div>
+    <div class="panel-default">
+        @foreach (var item in Model.ProductStores)
+        {
+            <div class="row">
+                <div class="col-md-3"> @Html.Label(item.Product.Name) </div>
+                <div class="col-md-3"> @Html.Label(item.Store.Name) </div>
+                <div class="col-md-2"> @Html.Label(item.Quantity.ToString()) </div>
+                <div class="col-md-2"> @Html.ActionLink("view product", "Detail", new { Id = item.Product.Id }) </div>
+                <div class="col-md-2"> @Html.ActionLink("view store", "Detail", "Store", new { Id = item.Store.Id }) </div>
+            </div>
+        }
+    </div>
+</div>

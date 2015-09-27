@@ -1,0 +1,10 @@
+{
+  "AppSettings": {
+    "SiteTitle": "Nemesis"
+  },
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Server=(localdb)\\mssqllocaldb;Database=aspnet5-Nemesis-31f284dc-04d2-461a-8dbd-0ad79c73f22d;Trusted_Connection=True;MultipleActiveResultSets=true"
+    }
+  }
+}

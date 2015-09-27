@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model SearchViewModel
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="welcome">
+    <div id="welcomeTitle" class="panel-title">
+        <h1>Welcome to the NEMESIS project</h1>
+    </div>
+    <div id="welcomeBody" class="panel-body">
+        <p>This is a simple federated ecommerce site linking users to local convenience stores where they can order products.</p>
+        <p>An Uber-like network of delivery drivers is then used to deliver the goods to end-users.</p>
+    </div>
+    <div id="welcomeSearch" class="panel-body, jumbotron">
+        @using (Html.BeginForm("List", "Store", FormMethod.Post, new { id = "form1" }))
+        {
+                <label>My postcode is...&nbsp;</label>@Html.TextBoxFor(x=>x.PostcodeSearchValue)
+                <input type="submit" value="Search" />
+        }
+    </div>
+    <div>
+        <p>@Html.ActionLink("View all stores", "List", "Store")</p>
+    </div>
+</div>

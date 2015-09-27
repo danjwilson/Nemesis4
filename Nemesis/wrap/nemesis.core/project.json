@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net46": {
+      "wrappedProject": "../../src/nemesis.core/nemesis.core.csproj",
+      "bin": {
+        "assembly": "../../src/nemesis.core/obj/{configuration}/nemesis.core.dll",
+        "pdb": "../../src/nemesis.core/obj/{configuration}/nemesis.core.pdb"
+      }
+    },
+    "net45": {
+      "wrappedProject": "../../src/nemesis.core/nemesis.core.csproj",
+      "bin": {
+        "assembly": "../../src/nemesis.core/obj/{configuration}/nemesis.core.dll",
+        "pdb": "../../src/nemesis.core/obj/{configuration}/nemesis.core.pdb"
+      }
+    }
+  }
+}
