@@ -26,10 +26,24 @@ namespace Nemesis.Site.Controllers
         [HttpGet]
         public IActionResult List(string Area, string ProductType)
         {
+            List<ProductType> productTypes = new List<ProductType>();
             if (Area != null && ProductType == null)
-                return View(new StoreListViewModel(_repo.Stores.Where(s => s.Postcode.ToLower().StartsWith(Area.Substring(0, 3).ToLower()))));
+            {
+                IQueryable<Store> stores = _repo.Stores.Where(s => s.Postcode.ToLower().StartsWith(Area.Substring(0, 3).ToLower()));
+                foreach(Store store in stores)
+                {
+                    productTypes.AddRange(store.ProductTypes);
+                }
+                return View(new StoreListViewModel(stores, productTypes.Distinct().AsQueryable()));
+            }
             else
-                return View(new StoreListViewModel(_repo.Stores));
+            {
+                foreach (Store store in _repo.Stores)
+                {
+                    productTypes.AddRange(store.ProductTypes);
+                }
+                return View(new StoreListViewModel(_repo.Stores, productTypes.Distinct().AsQueryable()));
+            }
         }
 
         [HttpGet]

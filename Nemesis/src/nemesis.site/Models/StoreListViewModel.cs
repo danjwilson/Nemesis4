@@ -9,10 +9,12 @@ namespace Nemesis.Site.Models
     public class StoreListViewModel
     {
         public IEnumerable<Store> Stores { get; set; }
+        public IEnumerable<ProductType> AvailableProductTypes { get; set; }
 
-        public StoreListViewModel(IQueryable<Store> stores)
+        public StoreListViewModel(IQueryable<Store> stores, IQueryable<ProductType> availableProductType)
         {
             Stores = stores;
+            AvailableProductTypes = availableProductType;
         }
     }
 }

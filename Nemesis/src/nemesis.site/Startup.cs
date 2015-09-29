@@ -20,6 +20,7 @@ using Microsoft.Framework.DependencyInjection;
 using Microsoft.Framework.Logging;
 using Microsoft.Framework.Logging.Console;
 using Microsoft.Framework.Runtime;
+using Nemesis.Core;
 using Nemesis.Site.Models;
 using Nemesis.Site.Services;
 
@@ -75,6 +76,8 @@ namespace Nemesis
                 options.ClientId = Configuration["Authentication:MicrosoftAccount:ClientId"];
                 options.ClientSecret = Configuration["Authentication:MicrosoftAccount:ClientSecret"];
             });
+
+            services.AddSingleton<IRepository, Repository>();
 
             // Add MVC services to the services container.
             services.AddMvc();

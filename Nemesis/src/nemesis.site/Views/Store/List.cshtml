@@ -10,15 +10,27 @@
     </div>
     <div class="panel-heading">
         <h3>Refine by product type</h3>
-        <h4>**TO FOLLOW**</h4>
+        <div class="panel-default">
+            @foreach (var productType in Model.AvailableProductTypes)
+            {
+                <div class="label label-primary"> @Html.Label(productType.Name)</div>
+            }
+        </div>
     </div>
-    <div class="panel-default">
-        @foreach (var item in Model.Stores)
+    <div class="panel-body">
+        @foreach (var store in Model.Stores)
         {
-            <div class="row">
-                <div class="col-md-4"> @Html.ActionLink(item.Name, "Detail", new { Id = item.Id }) </div>
-                <div class="col-md-2"> @Html.Label(item.Postcode) </div>
-                <div class="col-md-2"> @Html.Label(item.ProductTypes.First().Name)</div>
+            <div class="navbar-form">
+                <div class="row">
+                    <div class="col-md-3"> @Html.ActionLink(store.Name, "Detail", new { Id = store.Id }) </div>
+                    <div class="col-md-2"> @Html.Label(store.Postcode) </div>
+                    <div class="col-md-7">
+                        @foreach (var product in store.ProductTypes)
+                        {
+                            <div class="label label-default"> @Html.Label(product.Name)</div>
+                        }
+                    </div>
+                </div>
             </div>
         }
     </div>
