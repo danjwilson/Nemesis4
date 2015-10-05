@@ -10,11 +10,14 @@
     </div>
     <div class="panel-heading">
         <h3>Refine by product type</h3>
-        <div class="panel-default">
+        <div>
             @foreach (var productType in Model.AvailableProductTypes)
             {
-                <div class="label label-primary"> @Html.Label(productType.Name)</div>
-            }
+                <div class="checkbox-inline">
+                    @Html.CheckBox("productTypeSelectGroup", true, new { @value = productType.Id })
+                    @Html.Label(productType.Name)
+                </div>
+            }                
         </div>
     </div>
     <div class="panel-body">

@@ -2,3 +2,4 @@ C:\git\Nemesis4\Nemesis\src\nemesis.core\bin\Debug\nemesis.core.dll
 C:\git\Nemesis4\Nemesis\src\nemesis.core\bin\Debug\nemesis.core.pdb
 C:\git\Nemesis4\Nemesis\src\nemesis.core\obj\Debug\nemesis.core.dll
 C:\git\Nemesis4\Nemesis\src\nemesis.core\obj\Debug\nemesis.core.pdb
+C:\git\Nemesis4\Nemesis\src\nemesis.core\obj\Debug\nemesis.core.csprojResolveAssemblyReference.cache
