@@ -4,9 +4,31 @@
     ViewBag.Title = "Stores";
 }
 
+@section DanScripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            alert($('#divResults div.navbar-form div.row div.md-7 div label').text());
+        });
+        $(document).ready(function () {
+            //var row = $('#row-davesfish').parent('div.row');
+            //var row = $("#divResults div.navbar-form div.row div.productLabels:contains('Fish')").parent('div.row');
+            var productType = 'Other';
+            var row = $("div.productLabels:contains(" + productType + ")").parent('div.row');
+            $('#toggleButton').click(function () {
+                if (row.is(':visible')) {
+                    row.hide();
+                } else {
+                    row.show();
+                }
+            });
+        });
+    </script>
+}
+
 <div>
     <div class="panel-title">
         <h1>Stores in your area</h1>
+        <input type="button" id="toggleButton" value="toggle" />
     </div>
     <div class="panel-heading">
         <h3>Refine by product type</h3>
@@ -20,14 +42,14 @@
             }                
         </div>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" id="divResults">
         @foreach (var store in Model.Stores)
         {
             <div class="navbar-form">
                 <div class="row">
                     <div class="col-md-3"> @Html.ActionLink(store.Name, "Detail", new { Id = store.Id }) </div>
                     <div class="col-md-2"> @Html.Label(store.Postcode) </div>
-                    <div class="col-md-7">
+                    <div class="col-md-7 productLabels" id="row-@store.Id">
                         @foreach (var product in store.ProductTypes)
                         {
                             <div class="label label-default"> @Html.Label(product.Name)</div>
@@ -38,3 +60,4 @@
         }
     </div>
 </div>
+
