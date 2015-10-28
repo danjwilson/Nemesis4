@@ -6,19 +6,14 @@
 
 @section DanScripts {
     <script type="text/javascript">
-        $(document).ready(function () {
-            alert($('#divResults div.navbar-form div.row div.md-7 div label').text());
-        });
-        $(document).ready(function () {
-            //var row = $('#row-davesfish').parent('div.row');
-            //var row = $("#divResults div.navbar-form div.row div.productLabels:contains('Fish')").parent('div.row');
-            var productType = 'Other';
-            var row = $("div.productLabels:contains(" + productType + ")").parent('div.row');
-            $('#toggleButton').click(function () {
-                if (row.is(':visible')) {
-                    row.hide();
-                } else {
+        $(document).ready(function() {
+            $(':checkbox').click(function () {
+                var productType = $(this).val();
+                var row = $("div.productLabels:contains(" + productType + ")").parent('div.row');
+                if (this.checked) {
                     row.show();
+                } else {
+                    row.hide();
                 }
             });
         });
@@ -36,7 +31,7 @@
             @foreach (var productType in Model.AvailableProductTypes)
             {
                 <div class="checkbox-inline">
-                    @Html.CheckBox("productTypeSelectGroup", true, new { @value = productType.Id })
+                    @Html.CheckBox("productTypeSelectGroup", true, new { @value = productType.Name })
                     @Html.Label(productType.Name)
                 </div>
             }                
