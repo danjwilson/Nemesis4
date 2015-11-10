@@ -9,11 +9,12 @@
         $(document).ready(function() {
             $(':checkbox').click(function () {
                 var productType = $(this).val();
-                var row = $("div.productLabels:contains(" + productType + ")").parent('div.row');
+                var rows = $("div.productLabels:contains(" + productType + ")").parent('div.row');
+
                 if (this.checked) {
-                    row.show();
+                    rows.fadeIn();
                 } else {
-                    row.hide();
+                    rows.fadeOut();
                 }
             });
         });
@@ -23,9 +24,8 @@
 <div>
     <div class="panel-title">
         <h1>Stores in your area</h1>
-        <input type="button" id="toggleButton" value="toggle" />
     </div>
-    <div class="panel-heading">
+    <div class="panel-heading refine-container-grey">
         <h3>Refine by product type</h3>
         <div>
             @foreach (var productType in Model.AvailableProductTypes)
@@ -34,22 +34,24 @@
                     @Html.CheckBox("productTypeSelectGroup", true, new { @value = productType.Name })
                     @Html.Label(productType.Name)
                 </div>
-            }                
+            }
         </div>
     </div>
-    <div class="panel-body" id="divResults">
+    <div>&nbsp;</div>
+    <div class="panel-body result-container-blue" id="divResults">
         @foreach (var store in Model.Stores)
         {
             <div class="navbar-form">
-                <div class="row">
-                    <div class="col-md-3"> @Html.ActionLink(store.Name, "Detail", new { Id = store.Id }) </div>
+                <div class="row result-row-basic">
+                    <div class="col-md-3"> @Html.Label(store.Name) </div>
                     <div class="col-md-2"> @Html.Label(store.Postcode) </div>
-                    <div class="col-md-7 productLabels" id="row-@store.Id">
+                    <div class="col-md-6 productLabels" id="row-@store.Id">
                         @foreach (var product in store.ProductTypes)
                         {
                             <div class="label label-default"> @Html.Label(product.Name)</div>
                         }
                     </div>
+                    <div class="col-md-1"> @Html.ActionLink(store.Name, "Detail", new { Id = store.Id }, new { @class = "basic-button" }) </div>
                 </div>
             </div>
         }

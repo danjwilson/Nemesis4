@@ -32,3 +32,37 @@ textarea {
         z-index: 10 !important;
     }
 }
+
+/* Buttons */
+a.basic-button {
+    background: url('../images/basic-button.jpg') no-repeat top left;
+    display: block;
+    height: 24px;
+    text-indent: -9999px; /* hides the link text */    
+}
+
+a.basic-button:active {
+    background: url('../images/basic-button-pressed.jpg') no-repeat top left;
+    display: block;
+    height: 30px;
+    text-indent: -9999px; /* hides the link text */    
+}
+
+div.result-container-blue {
+    border-color: #D1E8F0;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #F2F8FA;
+}
+
+div.refine-container-grey {
+    border-color: #D7DADB;
+    border-width: 1px;
+    border-style: solid;
+    background-color: #F2F6F7;
+}
+
+div.result-row-basic {
+    border-color: #D1E8F0;
+    background-color: #FFFFFF;
+}
