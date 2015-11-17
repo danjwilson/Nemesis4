@@ -4,13 +4,32 @@
     ViewBag.Title = "Store Details";
 }
 
+@section DanScripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#toggleEdit').click(function () {
+                if ($('#divDetailEdit').is(':visible')) {
+                    $('#divDetailEdit').fadeIn();
+                    $('#divDetailView').fadeOut();
+                    $(this).val('Read Only');
+                } else {
+                    $('#divDetailEdit').fadeOut();
+                    $('#divDetailView').fadeIn();
+                    $(this).val('Edit');
+                }
+            });
+        });
+    </script>
+}
+
 <h2>Details</h2>
 
 <div>
     <div class="panel-title">
         <h1>Store Details</h1>
+        <input type="button" id="toggleEdit" value="Edit" />
     </div>
-    <div class="panel-default result-row-basic">
+    <div id="divDetailEdit" class="panel-default result-row-basic">
         @using (Html.BeginForm())
         {
         <div class="row">
@@ -32,7 +51,22 @@
         <input type="submit" />
         }
     </div>
-    <div>
-
-    </div>
+    <div id="divDetailView" class="panel-default result-row-basic">
+        <div class="row">
+            <div class="col-lg-4">Name:</div>
+            <div class="col-lg-8">@Html.LabelFor(x => x.Name)</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Address:</div>
+            <div class="col-lg-8">@Html.LabelFor(x => x.Address)</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Postcode:</div>
+            <div class="col-lg-8">@Html.LabelFor(x => x.Postcode)</div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Opening Hours:</div>
+            <div class="col-lg-8">@Html.LabelFor(x => x.OpeningHours)</div>
+        </div>
+    </div>   
 </div>
