@@ -9,13 +9,13 @@
         $(document).ready(function () {
             $('#toggleEdit').click(function () {
                 if ($('#divDetailEdit').is(':visible')) {
-                    $('#divDetailEdit').fadeIn();
-                    $('#divDetailView').fadeOut();
-                    $(this).val('Read Only');
-                } else {
-                    $('#divDetailEdit').fadeOut();
-                    $('#divDetailView').fadeIn();
+                    $('#divDetailEdit').hide();
+                    $('#divDetailView').show();
                     $(this).val('Edit');
+                } else {
+                    $('#divDetailEdit').show();
+                    $('#divDetailView').hide();
+                    $(this).val('Done');
                 }
             });
         });
@@ -29,44 +29,48 @@
         <h1>Store Details</h1>
         <input type="button" id="toggleEdit" value="Edit" />
     </div>
-    <div id="divDetailEdit" class="panel-default result-row-basic">
-        @using (Html.BeginForm())
-        {
-        <div class="row">
-            <div class="col-lg-4">Name:</div>
-            <div class="col-lg-8">@Html.TextBoxFor(x => x.Name)</div>
+    <div id="divDetailEdit" class="edit-container-red" hidden="hidden">
+        <div class="panel-default">
+            @using (Html.BeginForm())
+            {
+                <div class="row">
+                    <div class="col-md-3">Name:</div>
+                    <div class="col-md-8">@Html.TextBoxFor(x => x.Name)</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Address:</div>
+                    <div class="col-md-8">@Html.TextBoxFor(x => x.Address)</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Postcode:</div>
+                    <div class="col-md-8">@Html.TextBoxFor(x => x.Postcode)</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">Opening Hours:</div>
+                    <div class="col-md-8">@Html.TextBoxFor(x => x.OpeningHours)</div>
+                </div>
+                <input type="submit" />
+            }
         </div>
-        <div class="row">
-            <div class="col-lg-4">Address:</div>
-            <div class="col-lg-8">@Html.TextBoxFor(x => x.Address)</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">Postcode:</div>
-            <div class="col-lg-8">@Html.TextBoxFor(x => x.Postcode)</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">Opening Hours:</div>
-            <div class="col-lg-8">@Html.TextBoxFor(x => x.OpeningHours)</div>
-        </div>
-        <input type="submit" />
-        }
     </div>
-    <div id="divDetailView" class="panel-default result-row-basic">
-        <div class="row">
-            <div class="col-lg-4">Name:</div>
-            <div class="col-lg-8">@Html.LabelFor(x => x.Name)</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">Address:</div>
-            <div class="col-lg-8">@Html.LabelFor(x => x.Address)</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">Postcode:</div>
-            <div class="col-lg-8">@Html.LabelFor(x => x.Postcode)</div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">Opening Hours:</div>
-            <div class="col-lg-8">@Html.LabelFor(x => x.OpeningHours)</div>
+    <div id="divDetailView" class="detail-container-blue">
+        <div class="panel-default">
+            <div class="row">
+                <div class="col-md-3">Name:</div>
+                <div class="col-lg-8">@Html.Label(Model.Name)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Address:</div>
+                <div class="col-md-8">@Html.Label(Model.Address)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Postcode:</div>
+                <div class="col-md-8">@Html.Label(Model.Postcode)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Opening Hours:</div>
+                <div class="col-md-8">@Html.Label(Model.OpeningHours)</div>
+            </div>
         </div>
     </div>   
 </div>
