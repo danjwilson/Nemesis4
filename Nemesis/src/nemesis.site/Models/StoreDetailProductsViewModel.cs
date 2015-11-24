@@ -6,25 +6,27 @@ using Nemesis.Core;
 
 namespace Nemesis.Site.Models
 {
-    public class StoreDetailViewModel
+    public class StoreDetailProductListViewModel
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string Postcode { get; set; }
         public string OpeningHours { get; set; }
-        
-        public StoreDetailViewModel()
+        public IEnumerable<Product> Products { get; set; }
+
+        public StoreDetailProductListViewModel()
         {
         }
 
-        public StoreDetailViewModel(Store store)
+        public StoreDetailProductListViewModel(Store store, IQueryable<Product> products)
         {
             Id = store.Id;
             Name = store.Name;
             Address = store.Address;
             Postcode = store.Postcode;
             OpeningHours = store.OpeningHours;
+            Products = products;
         }
     }
 }

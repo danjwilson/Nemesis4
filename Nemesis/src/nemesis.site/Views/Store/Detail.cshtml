@@ -22,8 +22,6 @@
     </script>
 }
 
-<h2>Details</h2>
-
 <div>
     <div class="panel-title">
         <h1>Store Details</h1>
@@ -49,6 +47,9 @@
                     <div class="col-md-3">Opening Hours:</div>
                     <div class="col-md-8">@Html.TextBoxFor(x => x.OpeningHours)</div>
                 </div>
+                <div>
+                    <h2>More to follow</h2>
+                </div>
                 <input type="submit" />
             }
         </div>
@@ -57,7 +58,7 @@
         <div class="panel-default">
             <div class="row">
                 <div class="col-md-3">Name:</div>
-                <div class="col-lg-8">@Html.Label(Model.Name)</div>
+                <div class="col-md-8">@Html.Label(Model.Name)</div>
             </div>
             <div class="row">
                 <div class="col-md-3">Address:</div>
@@ -71,6 +72,9 @@
                 <div class="col-md-3">Opening Hours:</div>
                 <div class="col-md-8">@Html.Label(Model.OpeningHours)</div>
             </div>
+            <div>
+                <h2>More to follow</h2>
+            </div>
         </div>
-    </div>   
+    </div>
 </div>

@@ -53,6 +53,15 @@ namespace Nemesis.Site.Controllers
             return View(item);
         }
 
+        [HttpGet]
+        public IActionResult DetailProducts(string Id)
+        {
+            Store store = _repo.Stores.First(s => s.Id.Equals(Id));
+            IQueryable<Product> products = _repo.StoreProducts.Where(w => w.Store.Id == store.Id).Select(p => p.Product);
+            var item = new StoreDetailProductListViewModel(store, products);
+            return View(item);
+        }
+
         [HttpPost]
         public IActionResult Detail(StoreDetailViewModel model)
         {

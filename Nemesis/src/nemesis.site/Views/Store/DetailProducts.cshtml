@@ -1,0 +1,50 @@
+﻿@model Nemesis.Site.Models.StoreDetailProductListViewModel
+
+@{
+    ViewBag.Title = "Store Details with Products";
+}
+
+<div>
+    <div class="panel-title">
+        <h1>Store</h1>
+        <p>@Html.ActionLink("View store details", "Detail", "Store", new {id = Model.Id})</p>
+    </div>
+    <div id="divDetailView" class="detail-container-blue">
+        <div class="panel-default">
+            <div class="row">
+                <div class="col-md-3">Name:</div>
+                <div class="col-md-8">@Html.Label(Model.Name)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Address:</div>
+                <div class="col-md-8">@Html.Label(Model.Address)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Postcode:</div>
+                <div class="col-md-8">@Html.Label(Model.Postcode)</div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">Opening Hours:</div>
+                <div class="col-md-8">@Html.Label(Model.OpeningHours)</div>
+            </div>
+        </div>
+    </div>
+    <div>&nbsp;</div>
+    <div class="panel-title">
+        <h1>Products</h1>
+    </div>
+    <div class="panel-body result-container-blue" id="divResults">
+        @foreach (var product in Model.Products)
+        {
+            <div>
+                <div class="row result-row-basic">
+                    <div class="col-md-3"> @Html.Label(product.Name) </div>
+                    <div class="col-md-8"> @Html.Label(product.Description) </div>
+                    <div class="col-md-1 checkbox-inline">
+                        @Html.CheckBox("productSelectGroup", false, new { @value = product.Id })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
